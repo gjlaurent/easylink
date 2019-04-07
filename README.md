@@ -18,9 +18,9 @@ EasyLink official site is: https://gjlaurent.github.io/easylink/
 
 # Documentation
 
-  - <a href="https://gjlaurent.github.io/easylink/page_quick_reference.html">Quick reference</a>
-  - <a href="https://gjlaurent.github.io/easylink/page_examples.html">Examples</a>
-  - <a href="https://gjlaurent.github.io/easylink/modules.html">User reference</a>
+  - <a href="https://gjlaurent.github.io/easylink/html/page_quick_reference.html">Quick reference</a>
+  - <a href="https://gjlaurent.github.io/easylink/html/page_examples.html">Examples</a>
+  - <a href="https://gjlaurent.github.io/easylink/html/modules.html">User reference</a>
 
 
 ### Installation
