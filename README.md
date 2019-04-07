@@ -14,13 +14,13 @@ EasyLink is a multi-platform library that works under Linux, OSX and Windows.
 
 EasyLink is developed and maintained within the FEMTO-ST Institute located in Besançon, France and hosted by Renater and Github.
 
-EasyLink official site is: http://sourcesup.renater.fr/easylink/
+EasyLink official site is: https://gjlaurent.github.io/easylink/
 
 # Documentation
 
-  - <a href="https://sourcesup.renater.fr/easylink/page_quick_reference.html">Quick reference</a>
-  - <a href="https://sourcesup.renater.fr/easylink/page_examples.html">Examples</a>
-  - <a href="https://sourcesup.renater.fr/easylink/modules.html">User reference</a>
+  - <a href="https://gjlaurent.github.io/easylink/page_quick_reference.html">Quick reference</a>
+  - <a href="https://gjlaurent.github.io/easylink/page_examples.html">Examples</a>
+  - <a href="https://gjlaurent.github.io/easylink/modules.html">User reference</a>
 
 
 ### Installation

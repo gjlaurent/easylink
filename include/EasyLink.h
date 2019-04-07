@@ -98,9 +98,9 @@ Copyright (c) 2014-2019 FEMTO-ST, ENSMM, UFC, CNRS.
 EasyLink is developed and maintained within the FEMTO-ST Institute located in
 Besançon, France and hosted by Renater.
 
-EasyLink official site is: http://sourcesup.renater.fr/easylink/
+EasyLink official site is: https://gjlaurent.github.io/easylink/
 
-contact: Guillaume J. Laurent, https://gjlaurent.github.io/
+Contact: Guillaume J. Laurent, https://gjlaurent.github.io/
 
 
 \page pageQuickReference Quick reference 
