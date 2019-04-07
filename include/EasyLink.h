@@ -33,7 +33,7 @@ EasyLink is for you!!!
 
 ### Description
 
-EasyLink is a C++ software development kit for developping MEX-functions 
+EasyLink is a C++ software development kit for developing MEX-functions 
 for MATLAB and blocks for SIMULINK (S-functions).
 
 EasyLink allows to develop C++ MEX-functions and S-functions with less code and
@@ -45,7 +45,7 @@ variables thanks to a C++ Array class or using Eigen.
 
 EasyLink is a multi-platform library that works under Linux, OSX and Windows.
 
-### Documentation content
+### Documentation
 
   - \ref pageQuickReference
   - \ref pageExamples
@@ -62,8 +62,8 @@ Use Git or checkout with SVN using the web URL:
 
 ### Installation
 
-  -# Unpack the archive in a local directory
-  -# Open Matlab
+  -# Clone ar download EasyLink in a local directory
+  -# Open MATLAB
   -# Set the matlab current directory where EasyLink is located
   -# Execute the startup file "install.m" and follow
      instructions to select an installed C++ compiler
@@ -91,7 +91,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with the sources files.  If not, see http://www.gnu.org/licenses/.
 
-Copyright (c) 2014-2015 FEMTO-ST, ENSMM, UFC, CNRS.
+Copyright (c) 2014-2019 FEMTO-ST, ENSMM, UFC, CNRS.
 
 ### About
 

@@ -1,6 +1,6 @@
 # EasyLink
 
-EasyLink is a C++ software development kit for developping MEX-functions 
+EasyLink is a C++ software development kit for developing MEX-functions 
 for MATLAB and blocks for SIMULINK (S-functions).
 
 EasyLink allows to develop C++ MEX-functions and S-functions with less code and
