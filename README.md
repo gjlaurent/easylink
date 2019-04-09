@@ -23,7 +23,7 @@ EasyLink official site is: https://gjlaurent.github.io/easylink/
   - <a href="https://gjlaurent.github.io/easylink/html/modules.html">User reference</a>
 
 
-### Installation
+# Installation
 
   - Clone ar download EasyLink in a local directory
   - Open MATLAB
@@ -40,7 +40,7 @@ Use the file sfunOffset.cpp as a template to write a new S-function (SIMULINK).
 
 Use the file mexArrayProduct.cpp as a template to write a new MEX-function (MATLAB).
 
-### Licence
+# Licence
 
 EasyLink is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
