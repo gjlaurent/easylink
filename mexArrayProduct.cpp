@@ -24,26 +24,23 @@
 class Function : public BaseFunction {
 public:
 
-    // Specifies the number and the sizes of the input ports of the function 
+    // Checks the number and the sizes of the input ports of the function 
     // (right-side arguments)
-
-    static void initializeInputPortSizes() {
-        setInputPortsCount(2);
-        setInputPort(0, 1, 1, mxDOUBLE_CLASS);
-        setInputPort(1, -1, -1, mxDOUBLE_CLASS);
+    static void checkInputPortSizes() {
+        checkInputPortsCount(2);
+        checkInputPort(0, 1, 1, mxDOUBLE_CLASS);
+        checkInputPort(1, -1, -1, mxDOUBLE_CLASS);
     }
 
     // Specifies the number and the sizes of the output ports of the function
-    // (right-side arguments)
-
+    // (left-side arguments)
     static void initializeOutputPortSizes() {
-        setOutputPortsCount(1);
+        checkOutputPortsCount(1);
         setOutputPort(0, getInputNRows(1), getInputNCols(1), mxDOUBLE_CLASS);
     }
 
     // Calculates the function
-
-    static void outputs() {
+    static void computeOutputs() {
         double multiplier = getInputDouble(0);
         Array<double> inArray = getInputArray<double>(1);
         Array<double> outArray = getOutputArray<double>(0);

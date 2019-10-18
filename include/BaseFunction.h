@@ -27,36 +27,36 @@ public:
     static mxArray **plhs;
 
     /**
-     * This method allows to set the number of input ports (right-side  
+     * This method allows to check the number of input ports (right-side  
      * arguments).
      */
-    static void setInputPortsCount(int portsCount) {
+    static void checkInputPortsCount(int portsCount) {
         if (nrhs != portsCount)
-            throw std::runtime_error(toString(portsCount) + " inputs are required.");
+            throw std::runtime_error(toString(portsCount) + " right-side arguments are required.");
     }
 
     /**
-     * This method allows to set the dimensions and the type of an input 
+     * This method allows to check the dimensions and the type of an input 
      * port (right-side argument).
      * 
      * Use -1 to specify dynamically dimensioned intput arrays.
      */
-    static void setInputPort(int port, int nRows, int nCols, mxClassID type = mxDOUBLE_CLASS, mxComplexity complexFlag = mxREAL) {
+    static void checkInputPort(int port, int nRows, int nCols, mxClassID type = mxDOUBLE_CLASS, mxComplexity complexFlag = mxREAL) {
         const mxArray* mxarray = prhs[port];
         if (mxGetClassID(mxarray) != type) {
-            throw std::runtime_error("Input " + toString(port) + " has a wrong type.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " has a wrong type.");
         }
         if (mxIsSparse(mxarray)) {
-            throw std::runtime_error("Input " + toString(port) + " must not be sparse.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " must not be sparse.");
         }
         if (mxIsComplex(mxarray)) {
-            throw std::runtime_error("Input " + toString(port) + " must not be complex.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " must not be complex.");
         }
         if (nRows > 0 && mxGetM(mxarray) != nRows) {
-            throw std::runtime_error("Input " + toString(port) + " must have " + toString(nRows) + " rows.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " must have " + toString(nRows) + " rows.");
         }
         if (nCols > 0 && mxGetN(mxarray) != nCols) {
-            throw std::runtime_error("Input " + toString(port) + " must have " + toString(nCols) + " cols.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " must have " + toString(nCols) + " cols.");
         }
     }
 
@@ -69,16 +69,16 @@ public:
      * 
      * This method must be overridded in your custom function.
      */
-    static void initializeInputPortSizes() {
+    static void checkInputPortSizes() {
     }
 
     /**
-     * This method allows to set the number of output ports (left-side 
+     * This method allows to check the number of output ports (left-side 
      * arguments).
      */
-    static void setOutputPortsCount(int portsCount) {
+    static void checkOutputPortsCount(int portsCount) {
         if (nlhs != portsCount)
-            throw std::runtime_error(toString(portsCount) + " outputs are required.");
+            throw std::runtime_error(toString(portsCount) + " left-side arguments are required.");
     }
 
     /**
@@ -114,7 +114,14 @@ public:
      * 
      * This method must be overridded in your custom function.
      */
-    static void outputs() {
+    static void computeOutputs() {
+    }
+
+    /**
+     * Returns the number of input ports (right-side arguments).
+     */
+    static inline double getInputPortsCount() {
+        return nrhs;
     }
 
     /**
@@ -122,7 +129,7 @@ public:
      */
     static inline double getInputDouble(int port) {
         if (port < 0 || port >= nrhs)
-            throw std::runtime_error("Input port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " does not exist.");
         return mxGetScalar(prhs[port]);
     }
 
@@ -132,7 +139,7 @@ public:
     template<typename _Scalar>
     static inline _Scalar getInputScalar(int port) {
         if (port < 0 || port >= nrhs)
-            throw std::runtime_error("Input port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " does not exist.");
         return *((_Scalar*) mxGetPr(prhs[port]));
     }
 
@@ -142,7 +149,7 @@ public:
     template<typename _Scalar>
     static inline Array<_Scalar> getInputArray(int port) {
         if (port < 0 || port >= nrhs)
-            throw std::runtime_error("Input port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " does not exist.");
         return Array<_Scalar>(prhs[port], "input port " + toString(port), true);
     }
 
@@ -151,7 +158,7 @@ public:
      */
     static inline std::string getInputString(int port) {
         if (port < 0 || port >= nrhs)
-            throw std::runtime_error("Input port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " does not exist.");
         char buffer[256];
         mxGetString(prhs[port], buffer, 256);
         return std::string(buffer);
@@ -163,7 +170,7 @@ public:
      */
     static inline void* getInputData(int port) {
         if (port < 0 || port >= nrhs)
-            throw std::runtime_error("Input port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Right-side argument " + toString(port) + " does not exist.");
         return (void*) mxGetData(prhs[port]);
     }
 
@@ -194,11 +201,18 @@ public:
     }
 
     /**
+     * Returns the number of output ports (left-side arguments).
+     */
+    static inline double getOuputPortsCount() {
+        return nlhs;
+    }
+
+    /**
      * Writes a double value to an output port (left-side argument).
      */
     static inline void setOutputDouble(int port, double value) {
         if (port < 0 || port >= nlhs)
-            throw std::runtime_error("Output port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Left-side argument " + toString(port) + " does not exist.");
         double *x = mxGetPr(plhs[port]);
         x[0] = value;
     }
@@ -209,7 +223,7 @@ public:
     template<typename _Scalar>
     static inline void setOutputScalar(int port, _Scalar value) {
         if (port < 0 || port >= nlhs)
-            throw std::runtime_error("Output port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Left-side argument " + toString(port) + " does not exist.");
         _Scalar *x = mxGetPr(plhs[port]);
         x[0] = value;
     }
@@ -220,7 +234,7 @@ public:
     template<typename _Scalar>
     static inline Array<_Scalar> getOutputArray(int port) {
         if (port < 0 || port >= nlhs)
-            throw std::runtime_error("Output port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Left-side argument " + toString(port) + " does not exist.");
         return Array<_Scalar>(plhs[port], "output port " + toString(port), true);
     }
 
@@ -230,7 +244,7 @@ public:
      */
     static inline void* getOutputData(int port) {
         if (port < 0 || port >= nlhs)
-            throw std::runtime_error("Output port number " + toString(port) + " does not exist.");
+            throw std::runtime_error("Left-side argument " + toString(port) + " does not exist.");
         return mxGetData(plhs[port]);
     }
 
