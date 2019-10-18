@@ -23,7 +23,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
         Function::computeOutputs();
     } catch (std::exception const& e) {
         strcpy(ERROR_MSG_BUFFER, e.what());
-        mexErrMsgIdAndTxt("Error in mex function", ERROR_MSG_BUFFER);
+        mexErrMsgIdAndTxt("MEXFile:runtimeError", ERROR_MSG_BUFFER);
         return;
     }
 }

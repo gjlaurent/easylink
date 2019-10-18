@@ -68,16 +68,6 @@ inline unsigned long getComputerTime() {
 #endif
 }
 
-#ifdef _MSC_VER
-
-inline int round(double x) {
-    if (x > -0.5)
-        return ((int) (x + 0.5));
-    else
-        return ((int) (x - 0.5));
-}
-#endif
-
 #define EQUALITY_TOLERANCE 0.00000000000001
 
 /** \ingroup utils
